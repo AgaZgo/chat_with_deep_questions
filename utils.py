@@ -1,8 +1,8 @@
-from langchain.document_loaders import DirectoryLoader
+from langchain.document_loaders import DirectoryLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.prompts import PromptTemplate
-from langchain.memory import ConversationBufferWindowMemory, ConversationBufferMemory
+from langchain.memory import ConversationBufferMemory
 from langchain.chains import RetrievalQA
 
 import shutil
@@ -10,6 +10,16 @@ import shutil
 
 def load_transcripts(data_path, chunk_size, chunk_overlap):
     loader = DirectoryLoader(data_path)
+    docs = loader.load()
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap
+    )
+    chunks = splitter.split_documents(docs)
+    return chunks
+
+def load_episode(file_path, chunk_size, chunk_overlap):
+    loader = TextLoader(file_path)
     docs = loader.load()
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
@@ -51,7 +61,7 @@ def build_prompt():
 def initialize_chain(llm, vectordb, prompt_template):
     qa_chain = RetrievalQA.from_chain_type(
         llm,
-        retriever=vectordb.as_retriever(search_kwargs={'k':3}),
+        retriever=vectordb.as_retriever(search_kwargs={'k':5}),
         chain_type="stuff",
         return_source_documents=True,
         verbose=True,
