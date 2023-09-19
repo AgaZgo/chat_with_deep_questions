@@ -27,7 +27,10 @@ if 'qa_chain' not in st.session_state:
     st.session_state['qa_chain'] = initialize_chain(prompt_template)
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+    st.session_state["messages"] = [
+        {"role": "assistant", 
+         "content": "Hi, I'm a Deep Questions chatbot. I will answer your questions about the podcast. How can I help you?"}
+    ]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
