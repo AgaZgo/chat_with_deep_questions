@@ -14,5 +14,6 @@ Streamlit demo app that takes user's queries and generates answers based on the 
 3. History of conversation is kept in chat memory.
 
 ## Tech stack:
-- 🦜🔗 LangChain
-- ![](st_icon.png) Streamlit
+- 🦜🔗LangChain
+- <img src='icons/streamlit.png'> Streamlit
+- <img src='icons/chroma.png' width=25> Chroma
