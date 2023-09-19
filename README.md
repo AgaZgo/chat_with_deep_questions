@@ -17,3 +17,18 @@ Streamlit demo app that takes user's queries and generates answers based on the 
 - 🦜🔗LangChain
 - <img src='icons/streamlit.png'> Streamlit
 - <img src='icons/chroma.png' width=25> Chroma
+
+## Run locally:
+1. Clone repository:
+```
+git clone https://github.com/AgaZgo/chat_with_deep_questions.git
+cd chat_with_deep_questions
+```
+2. Install requirements:
+```
+pip install -r requirements.txt
+```
+3. Run app:
+```
+streamlit run app.py
+```

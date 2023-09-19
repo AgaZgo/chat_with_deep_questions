@@ -8,10 +8,12 @@ def sidebar():
     with st.sidebar:
         st.session_state['episode'] = st.selectbox(
             'Choose the episode you want to chat with:', 
-            os.listdir('data/') + ['all'], 
+            sorted([t[:-len('.txt')] for t in os.listdir('data/')])[::-1] + ['all'], 
             index=0, 
             on_change=clear_state
         )
+        if st.session_state['episode']!='all':
+            st.session_state['episode']+='.txt'
         
         st.session_state['gpt_model'] = st.selectbox(
             'Choose GPT model:', 
@@ -22,6 +24,7 @@ def sidebar():
         
         openai_api_key = st.text_input(
             "Your OpenAI API key",
+            type='password'
         )
 
         if openai_api_key:    

@@ -15,7 +15,7 @@ def initialize_chain(prompt_template):
         return_source_documents=True,
         verbose=True,
         chain_type_kwargs={
-            "verbose": True,
+            "verbose": False,
             "prompt": prompt_template,
             "memory": ConversationBufferMemory(
                 memory_key="history",
