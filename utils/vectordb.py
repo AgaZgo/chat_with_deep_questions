@@ -1,3 +1,5 @@
+import streamlit as st
+
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 import shutil
@@ -9,7 +11,7 @@ def build_vectordb(persist_directory, chunks):
         os.mkdir(persist_directory)
     else:
         shutil.rmtree(persist_directory)
-    embedding = OpenAIEmbeddings()
+    embedding = OpenAIEmbeddings(openai_api_key=st.session_state['OPENAI_API_KEY'])
     vectordb = Chroma.from_documents(
         documents=chunks,
         embedding=embedding,

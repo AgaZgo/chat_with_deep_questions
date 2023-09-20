@@ -6,7 +6,10 @@ from langchain.chains import RetrievalQA
 
 
 def initialize_chain(prompt_template):
-    llm = ChatOpenAI(model_name=st.session_state['gpt_model'], temperature=0)
+    llm = ChatOpenAI(
+        model_name=st.session_state['gpt_model'], 
+        temperature=0, 
+        openai_api_key=st.session_state['OPENAI_API_KEY'])
     
     qa_chain = RetrievalQA.from_chain_type(
         llm,

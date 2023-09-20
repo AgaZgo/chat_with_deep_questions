@@ -24,14 +24,14 @@ def sidebar():
         
         openai_api_key = st.text_input(
             "Your OpenAI API key",
-            type='password'
+            type='password',
+            on_change=clear_state
         )
 
         if openai_api_key:    
-            os.environ['OPENAI_API_KEY'] = openai_api_key
+            st.session_state["OPENAI_API_KEY"] = openai_api_key
         else:
             st.warning(
                 "You need OpenAI API key use this chat. You can get a key at"
                 " https://platform.openai.com/account/api-keys."
             )
-            st.stop()

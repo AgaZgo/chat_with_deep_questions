@@ -9,9 +9,18 @@ from utils.chains import initialize_chain
 
 st.set_page_config(page_title="DeepQuestionsChat", page_icon=":question:", layout="wide")
 st.title('Chat with Deep Questions podcast')
-
 sidebar()
 
+openai_api_key = st.session_state.get("OPENAI_API_KEY")
+
+
+if "OPENAI_API_KEY" not in st.session_state:
+    st.warning(
+        "Enter your OpenAI API key in the sidebar to start a chat."
+    )
+    st.stop()
+
+    
 episode = st.session_state['episode']
 gpt_model = st.session_state['gpt_model']
 
