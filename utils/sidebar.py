@@ -35,3 +35,5 @@ def sidebar():
                 "You need OpenAI API key use this chat. You can get a key at"
                 " https://platform.openai.com/account/api-keys."
             )
+            
+        "[View the source code](https://https://github.com/AgaZgo/chat_with_deep_questions)"
