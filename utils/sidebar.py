@@ -36,4 +36,4 @@ def sidebar():
                 " https://platform.openai.com/account/api-keys."
             )
             
-        "[View the source code](https://https://github.com/AgaZgo/chat_with_deep_questions)"
+        st.markdown("[View the source code](https://https://github.com/AgaZgo/chat_with_deep_questions)")
